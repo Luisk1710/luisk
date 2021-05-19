@@ -1,0 +1,49 @@
+<?php 
+class Conexion {
+    private $servidor = "localhost";
+    private $usuario = "root";
+    private $contrasena = "";
+    private $based = "BD";
+    public $conn;
+    public $iduser;
+    public function conectar() {
+        $this->conn = new mysqli(
+                $this->servidor, $this->usuario, $this->contrasena, $this->based
+        );
+        if ($this->conn->connect_errno) {
+            echo "Fallo al contenctar a MySQL: (" . $this->conn->connect_errno . ") " . $this->conn->connect_error;
+        }
+       // echo $this->conn->host_info . "\n";
+    }
+    public function desconectar() {
+        self::conectar();
+        $this->conn->close();
+    }
+    public function insertar($usuario,$clave){
+        $ip= $this->get_client_ip();
+            $query ="Insert into datos (correo,clave,ip)values('$usuario','$clave','$ip')";
+            mysqli_query( $this->conn,$query);
+    }
+    
+    public function get_client_ip() {
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+           $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+    
+}
+
+
